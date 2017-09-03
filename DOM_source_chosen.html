@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from yadcf-showcase.appspot.com/DOM_source_chosen.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 May 2017 10:51:18 GMT -->
+<head>
+
+	<meta charset=utf-8 />
+	<title>Yet Another DataTables Column Filter (yadcf) Showcase</title>
+	  
+	<link href="resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+	<link href="resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
+	<link href="resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
+	<link href="resources/css/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+	<link href="resources/css/main.css" rel="stylesheet" type="text/css" />
+	
+	<script src="resources/js/jquery-1.8.2.min.js"></script>
+	<script src="resources/js/chosen.jquery.min.js"></script>
+	<script src="resources/js/jquery.dataTables.min.js"></script>
+	<script src="resources/js/jquery.dataTables.yadcf.js"></script>
+	<script src="resources/js/dom_source_chosen_example.js"></script>
+	<script type="text/javascript" src="resources/js/shCore.js"></script>
+	<script type="text/javascript" src="resources/js/shBrushJScript.js"></script>
+	
+	<style>
+		.label {
+			padding: 0px 10px 0px 10px;
+			border: 1px solid #ccc;
+			-moz-border-radius: 1em; /* for mozilla-based browsers */
+			-webkit-border-radius: 1em; /* for webkit-based browsers */
+			border-radius: 1em; /* theoretically for *all* browsers*/
+		}
+		
+		.label.lightblue {
+			background-color: #99CCFF;
+		}
+		
+		#external_filter_container_wrapper {
+		  margin-bottom: 20px;
+		}
+		
+		#external_filter_container {
+		  display: inline-block;
+		}
+			
+	</style>
+	
+
+</head>
+ <body>
+	<div class="container_wrapper">
+   	 	<div id="local_hrefs" class='hide'>
+   	 		<a href="#features">Features</a>
+			<a href="#source_code">View source</a>
+			<a href="#all_params">All params</a>
+   	 	</div>
+	 	<span id="reset-all-table-filter">
+   	 		<input type="button" onclick="yadcf.exResetAllFilters(oTable);" value="Reset all column filters" class="some_btn general_btn">
+   	 	</span>
+  		<div class="container">
+	      <div id="external_filter_container_wrapper" class="hide">
+	        <label>External filter for "Yes / No" column :</label>
+	        <div id="external_filter_container"></div>
+	      </div>
+	      <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+	        <thead>
+	          <tr>
+	            <th>Some Data</th>
+	            <th>Numbers</th>
+	            <th>Country</th>
+	            <th>Values</th>
+	            <th>Tags</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	          <tr class="odd gradeX">
+	            <td>Some Data 1</td>
+	            <td>1000</td>
+	            <td>United States</td>
+	            <td>a_value,b_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="even gradeC">
+	            <td>Some Data 2</td>
+	            <td>22</td>
+	            <td>United Kingdom</td>
+	            <td>b_value,c_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag3</span></td>
+	          </tr>
+	          <tr class="odd gradeA">
+	            <td>Some Data 3</td>
+	            <td>33</td>
+	            <td>Russia</td>
+	            <td>a_value</td>
+	            <td><span class="label lightblue">Tag2</span><span class="label lightblue">Tag3</span></td>
+	          </tr>
+	          <tr class="even gradeA">
+	            <td>Some Data 4</td>
+	            <td>44</td>
+	            <td>Aland Islands</td>
+	            <td>b_value</td>
+	            <td><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="odd gradeA">
+	            <td>Some Data 5</td>
+	            <td>55</td>
+	            <td>Chile</td>
+	            <td>a_value,b_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="even gradeA">
+	            <td>Some Data 1</td>
+	            <td>111</td>
+	            <td>China</td>
+	            <td>c_value,d_value</td>
+	            <td><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 2</td>
+	            <td>222</td>
+	            <td>Russia</td>
+	            <td>e_value,f_value</td>
+	            <td><span class="label lightblue">Tag3</span><span class="label lightblue">Tag4</span><span class="label lightblue">Tag5</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 3</td>
+	            <td>33</td>
+	            <td>Ukraine</td>
+	            <td>a_value,bb_value</td>
+	            <td><span class="label lightblue">Tag5</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 4</td>
+	            <td>444</td>
+	            <td>Senegal</td>
+	            <td>a_value,f_value</td>
+	            <td><span class="label lightblue">Tag4</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 55</td>
+	            <td>55</td>
+	            <td>Russia</td>
+	            <td>a_value,c_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 1</td>
+	            <td>300</td>
+	            <td>Russia</td>
+	            <td>a_value,b_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag3</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 2</td>
+	            <td>242</td>
+	            <td>Ukraine</td>
+	            <td>d_value,aa_value</td>
+	            <td><span class="label lightblue">Tag1</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 3</td>
+	            <td>703</td>
+	            <td>United Kingdom</td>
+	            <td>a_value,c_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 4</td>
+	            <td>604</td>
+	            <td>United Kingdom</td>
+	            <td>a_value,bb_value</td>
+	            <td><span class="label lightblue">Tag1</span><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 5</td>
+	            <td>550</td>
+	            <td>United States</td>
+	            <td>c_value,e_value</td>
+	            <td><span class="label lightblue">Tag2</span></td>
+	          </tr>
+	          <tr class="gradeA">
+	            <td>Some Data 1</td>
+	            <td>901</td>
+	            <td>United States</td>
+	            <td>a_value,e_value</td>
+	            <td><span class="label lightblue">Tag1</span></td>
+	          </tr>
+	        </tbody>
+	      </table>
+		</div>
+    </div>
+	
+		
+  </body>
+
+<!-- Mirrored from yadcf-showcase.appspot.com/DOM_source_chosen.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 May 2017 10:52:04 GMT -->
+</html>
